@@ -38,7 +38,7 @@ public class TextParser {
             String[] words = pattern.split(sentencesInText.get(i));
             for (String word : words) {
                 if (!word.equals("")) {
-                    wordsInSentence.get(i).add(word);
+                    wordsInSentence.get(i).add(word.toLowerCase());
                 }
             }
         }
