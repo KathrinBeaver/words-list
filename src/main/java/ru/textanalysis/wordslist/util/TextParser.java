@@ -19,7 +19,10 @@ public class TextParser {
         wordsInSentence = new ArrayList<>();
         sentencesInText = new ArrayList<>();
         wordsInText = new ArrayList<>();
-        this.text = text;
+        this.text = text.replaceAll("\n", " ")
+                .replaceAll("\r", " ")
+                .replaceAll("\t", " ")
+                .replaceAll("\"", "");
         splitTextBySentences();
         splitSentenceByWords();
         getWordsOfText();

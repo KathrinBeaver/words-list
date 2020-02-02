@@ -17,6 +17,7 @@
 
     <properties>
         <java.version>11</java.version>
+        <version.tawt>master-8cd0ade30d-1</version.tawt>
     </properties>
 
     <dependencies>
@@ -71,7 +72,105 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.jalexpr</groupId>
+            <artifactId>tawt</artifactId>
+            <version>${version.tawt}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jalexpr.tawt</groupId>
+            <artifactId>gama</artifactId>
+            <version>${version.tawt}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>jmorfsdk</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>morphological-structures</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jalexpr.tawt</groupId>
+            <artifactId>ambiguity-words-filter</artifactId>
+            <version>${version.tawt}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>morphological-structures</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>rules-for-compatibility</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jalexpr.tawt</groupId>
+            <artifactId>jmorfsdk</artifactId>
+            <version>${version.tawt}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>morphological-structures</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jalexpr.tawt</groupId>
+            <artifactId>graphematic-parser</artifactId>
+            <version>${version.tawt}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jalexpr.tawt</groupId>
+            <artifactId>morphological-structures</artifactId>
+            <version>${version.tawt}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jalexpr.tawt</groupId>
+            <artifactId>rules-for-compatibility</artifactId>
+            <version>${version.tawt}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>morphological-structures</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jalexpr.tawt</groupId>
+            <artifactId>syntactic-parser</artifactId>
+            <version>${version.tawt}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>morphological-structures</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>gama</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>ambiguity-words-filter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>rules-for-compatibility</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
