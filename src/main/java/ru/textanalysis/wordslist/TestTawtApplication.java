@@ -12,9 +12,11 @@ import ru.textanalysis.wordslist.model.Word;
 import ru.textanalysis.wordslist.model.WordMainForm;
 import ru.textanalysis.wordslist.util.PrintWordsList;
 import ru.textanalysis.wordslist.util.TextParser;
+import ru.textanalysis.wordslist.util.TypeOfSpeech;
 import ru.textanalysis.wordslist.util.WordListConverter;
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,10 +40,10 @@ public class TestTawtApplication {
 
             Gama gama = new Gama();
             gama.init();
-            RefSentenceList sentenceList = gama.getMorphParagraph("Белый снег летел за окном.");
+            RefSentenceList sentenceList = gama.getMorphParagraph("Мой новый друг снисходительно улыбнулся.");
             System.out.println(sentenceList);
 
-            sentenceList = gama.getMorphParagraph("Старику хотелось важных, серьезных мыслей.");
+            sentenceList = gama.getMorphParagraph("Но как же я удивился, когда мой строгий судья вдруг просиял.");
             System.out.println(sentenceList);
 
             try {
@@ -60,7 +62,8 @@ public class TestTawtApplication {
             Маски морфологических характеристик для разных частей речи
          */
             long NOUN_MASK = MorfologyParameters.Numbers.IDENTIFIER |
-                    MorfologyParameters.Gender.IDENTIFIER;
+                    MorfologyParameters.Gender.IDENTIFIER |
+                    MorfologyParameters.Case.IDENTIFIER;
 //                MorfologyParameters.Animacy.IDENTIFIER;
 
             long NAME_MASK = MorfologyParameters.Name.IDENTIFIER |
@@ -140,8 +143,8 @@ public class TestTawtApplication {
                         switch (word.getTypeOfSpeech()) {
                             case MorfologyParameters.TypeOfSpeech.NOUN:
                                 allNouns.add(word);
-                                //long morphClr = word.getMorphCharateristics();
-                                long morphClr = word.getMorphCharateristics() & NOUN_MASK;
+                                long morphClr = word.getMorphCharateristics();
+                                //long morphClr = word.getMorphCharateristics() & NOUN_MASK;
                                 if (nounsMorph.containsKey(morphClr)) {
                                     nounsMorph.get(morphClr).add(word);
                                 } else {
@@ -242,7 +245,9 @@ public class TestTawtApplication {
                         }
 
                         // Без разделения по частям речи, по предложениям и морфологии
-                        long morphClr = word.getMorphCharateristics() & NOUN_MASK;
+                        //long morphClr = word.getMorphCharateristics() & NOUN_MASK;
+                        long morphClr = word.getMorphCharateristics();
+
                         MorphSentence morphSentAdverb = new MorphSentence(morphClr, word.getSentenceNumber());
                         if (allMorphSent.containsKey(morphSentAdverb)) {
                             allMorphSent.get(morphSentAdverb).add(word);
@@ -334,6 +339,7 @@ public class TestTawtApplication {
             printUtil.printMorphSentWordsMap(allWords, "result\\for_weka\\datAll_"+ file.getName() +".arff");
             printUtil.printMorphSentWordsMap(allNouns, "result\\for_weka\\dataNouns_"+ file.getName() +".arff");
         }
+
 //        List<IOmoForm> characteristics5 = jMorfSdk.getAllC haracteristicsOfForm("мыл");
 //        characteristics5.forEach((form) -> {
 //            System.out.println(form);
