@@ -17,7 +17,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <version.tawt>master-8cd0ade30d-1</version.tawt>
+        <version.tawt>66b3ffb881</version.tawt>
     </properties>
 
     <dependencies>
@@ -117,6 +117,10 @@
                     <groupId>ru.textanalysis.tawt</groupId>
                     <artifactId>morphological-structures</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>ru.textanalysis.tawt</groupId>
+                    <artifactId>morphological-dictionary</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -162,6 +166,11 @@
                     <artifactId>rules-for-compatibility</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jalexpr.tawt</groupId>
+            <artifactId>morphological-dictionary</artifactId>
+            <version>${version.tawt}</version>
         </dependency>
     </dependencies>
 
