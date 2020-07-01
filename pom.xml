@@ -170,7 +170,7 @@
         <dependency>
             <groupId>com.github.jalexpr.tawt</groupId>
             <artifactId>morphological-dictionary</artifactId>
-            <version>${version.tawt}</version>
+            <version>a320235737</version>
         </dependency>
     </dependencies>
 
